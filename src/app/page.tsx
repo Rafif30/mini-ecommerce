@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Navbar from "@/src/components/Navbar";
 import Cards from "@/src/components/Card"
+import Products from "@/src/components/Products"
+import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 import { prefixBasePath } from '@/src/utils';
@@ -23,6 +25,51 @@ const cards = [
     desc: "Find anything without hassle",
     action: "Browse",
     image: `${prefixBasePath('/feature-image2.png')}`,
+  },
+];
+
+const listProducts = [
+  {
+    id: 1,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
+  },
+  {
+    id: 2,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
+  },
+  {
+    id: 3,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
+  },
+  {
+    id: 4,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
+  },
+  {
+    id: 5,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
+  },
+  {
+    id: 6,
+    title: "Speed",
+    color: "Fast checkout",
+    price: 30000,
+    image: `${prefixBasePath('/feature-image1.png')}`,
   },
 ];
 
@@ -139,6 +186,56 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+      <section id="products" className="mx-auto px-6 lg:px-8 bg-neutral-50 pt-20 pb-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <p className="text-lg text-neutral-900 font-bold max-w-2xl mx-auto mb-4">
+              Featured
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+              Products
+            </h2>
+            <p className="text-lg text-neutral-900 max-w-2xl mx-auto mb-4">
+              Start with what matters most
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {listProducts.map(product => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                className="rounded-xl border border-neutral-200 overflow-hidden shadow-sm"
+              >
+                <Products 
+                  title={product.title}
+                  price={product.price}
+                  color={product.color}
+                  image={product.image}
+                />
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center py-6 space-y-1">
+            <Button
+              type="default"
+              className="!mt-3 !font-semibold"
+              variant="filled"
+              color="default"
+            >
+              View All
+            </Button>
+          </div> 
         </div>
       </section>
     </div>
